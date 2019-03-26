@@ -61,6 +61,13 @@
     (.create service blob-info content-bytes target-options)
     ))
 
+(defn delete-blob
+  "deletes object"
+  [bucket-name blob-name]
+  (let [service (.getService (StorageOptions/getDefaultInstance))
+        blob-id (BlobId/of bucket-name blob-name)]
+    (.delete service blob-id)))
+
 ;;; need to pass signing user
 ;;; https://googleapis.github.io/google-cloud-java/google-cloud-clients/apidocs/index.html?com/google/cloud/storage/package-summary.html
 
